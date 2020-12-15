@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './SearchPage.css';
 import { Button } from '@material-ui/core';
 import SearchResult from '../search-result/SearchResult';
+import AirbnbContext from '../../context/airbnb/airbnbContext';
 
 function SearchPage() {
+  const airbnbContext = useContext(AirbnbContext);
+  const { airbnbs, getAirbnbs } = airbnbContext;
+
+  useEffect(() => {
+    getAirbnbs();
+  });
+
+  console.log(airbnbs);
+
   return (
     <div className='searchPage'>
       <div className='searchPage__info'>
